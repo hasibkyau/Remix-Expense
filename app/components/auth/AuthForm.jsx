@@ -1,4 +1,4 @@
-import { FaLock } from 'react-icons/fa';
+import { FaLock } from "react-icons/fa";
 
 function AuthForm() {
   return (

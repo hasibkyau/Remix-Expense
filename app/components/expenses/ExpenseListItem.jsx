@@ -1,4 +1,4 @@
-function ExpenseListItem({ title, amount }) {
+function ExpenseListItem({id, title, amount }) {
   function deleteExpenseItemHandler() {
     // tbd
   }
@@ -11,7 +11,7 @@ function ExpenseListItem({ title, amount }) {
       </div>
       <menu className="expense-actions">
         <button onClick={deleteExpenseItemHandler}>Delete</button>
-        <a href="tbd">Edit</a>
+        <a href={id}>Edit</a>
       </menu>
     </article>
   );

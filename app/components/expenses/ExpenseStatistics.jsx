@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo } from "react";
 
 function calculateSummaryStatistics(expenses) {
   const amounts = expenses.map((expense) => +expense.amount);

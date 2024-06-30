@@ -10,6 +10,7 @@ import "./tailwind.css";
 
 import styleSheet from "~/tailwind.css?url";
 import { LinksFunction } from "@remix-run/node";
+import MainHeader from "~/components/navigation/MainHeader";
 
 import sharedStyles from "~/styles/shared.css";
 
@@ -24,12 +25,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <header>
-          <ul className="m-3 p-2 bg-slate-600 text-red-50 flex gap-3">
-            <Link to={"/"}>Home</Link>
-            <Link to={"/expenses"}>Expenses</Link>
-            <Link to={"/auth"}>Auth</Link>
-            <Link to={"/pricing"}>Pricing</Link>
-          </ul>
+          <MainHeader />
         </header>
 
         {children}
@@ -42,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export const links: LinksFunction = () => {
   return [
-    { rel: "stylesheet", href: styleSheet },
+    // { rel: "stylesheet", href: styleSheet },
     { rel: "stylesheet", href: sharedStyles },
   ];
 };

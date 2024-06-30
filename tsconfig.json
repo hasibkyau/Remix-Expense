@@ -6,7 +6,7 @@
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx"
-  ],
+, "app/components/auth/AuthForm.jsx", "app/components/expenses/Chart.jsx", "app/components/expenses/ChartBar.jsx", "app/components/expenses/ExpenseForm.jsx", "app/components/expenses/ExpenseListItem.jsx", "app/components/expenses/ExpensesList.jsx", "app/components/expenses/ExpenseStatistics.jsx"  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["@remix-run/node", "vite/client"],
