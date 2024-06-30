@@ -1,6 +1,7 @@
 import { FaTrophy, FaHandshake } from "react-icons/fa";
-
+import MainHeader from "~/components/navigation/MainHeader";
 import PricingPlan from "~/components/marketing/PricingPlan";
+import pricingStyles from "~/styles/marketing.css";
 
 const PRICING_PLANS = [
   {
@@ -21,22 +22,29 @@ const PRICING_PLANS = [
 
 export default function PricingPage() {
   return (
-    <main id="pricing">
-      <h2>Great Product, Simple Pricing</h2>
-      <ol id="pricing-plans">
-        {PRICING_PLANS.map((plan) => (
-          <li key={plan.id} className="plan">
-            <PricingPlan
-              title={plan.title}
-              price={plan.price}
-              perks={plan.perks}
-              icon={plan.icon}
-            />
-          </li>
-        ))}
-      </ol>
-    </main>
+    <>
+      <MainHeader />
+      <main id="pricing">
+        <h2>Great Product, Simple Pricing</h2>
+        <ol id="pricing-plans">
+          {PRICING_PLANS.map((plan) => (
+            <li key={plan.id} className="plan">
+              <PricingPlan
+                title={plan.title}
+                price={plan.price}
+                perks={plan.perks}
+                icon={plan.icon}
+              />
+            </li>
+          ))}
+        </ol>
+      </main>
+    </>
   );
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: pricingStyles }];
 }
 
 export function meta() {}
