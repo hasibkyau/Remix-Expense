@@ -11,7 +11,7 @@ function ExpenseListItem({id, title, amount }) {
       </div>
       <menu className="expense-actions">
         <button onClick={deleteExpenseItemHandler}>Delete</button>
-        <a href={id}>Edit</a>
+        <a href={`/expenses/${id}`}>Edit</a>
       </menu>
     </article>
   );
