@@ -43,7 +43,7 @@ function ExpenseForm() {
     <Form
       className="form"
       id="expense-form"
-      method={expenseData ? 'patch' : 'post'}
+      method={expenseData ? "patch" : "post"}
       // onSubmit={submitHandler}
     >
       <p>
@@ -95,7 +95,7 @@ function ExpenseForm() {
         <button disabled={isSubmitting}>
           {isSubmitting ? "Saving..." : "Save Expense"}
         </button>
-        <Link to="..">Cancel</Link>
+        <Link to="/expenses">Cancel</Link>
       </div>
     </Form>
   );
