@@ -4,7 +4,7 @@ import authStyles from "~/styles/auth.css";
 import MainHeader from "~/components/navigation/MainHeader";
 import { ActionFunctionArgs, redirect } from "@remix-run/node";
 import { validateCredentials } from "~/data/validation.server";
-import { signup } from "~/data/auth.server";
+import { login, signup } from "~/data/auth.server";
 
 const AuthPage = () => {
   return (
@@ -34,16 +34,13 @@ export async function action({ request }: ActionFunctionArgs) {
     return error;
   }
 
-  try{
+  try {
     if (authMode === "login") {
-      //login logic
+      return await login(credentials);
     } else {
-      await signup(credentials);
-      return redirect("/expenses");
+      return await signup(credentials);
     }
-  } catch (error:any){
-    if(error.status === 422){
-      return {credentials: error.message}
-    }
+  } catch (error: any) {
+    return { credentials: error.message };
   }
 }
