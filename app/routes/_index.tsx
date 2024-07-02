@@ -1,48 +1,64 @@
-import type { MetaFunction } from "@remix-run/node";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
-  ];
-};
+import { FaArrowRight, FaDollarSign, FaChartBar } from "react-icons/fa";
+import { Link } from "@remix-run/react";
+import MainHeader from "~/components/navigation/MainHeader";
+import pricingStyles from "~/styles/marketing.css";
+import { getUserFromSession } from "~/data/auth.server";
+import { ActionFunctionArgs } from "@remix-run/node";
 
 export default function Index() {
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <>
+      <MainHeader />
+      <main>
+        <section className="marketing-section">
+          <header>
+            <FaDollarSign />
+            <h2>A Central Space</h2>
+          </header>
+          <div className="marketing-content">
+            <div className="marketing-image">
+              <img
+                src="images/expenses-management.jpg"
+                alt="A list of expenses."
+              />
+            </div>
+            <div className="marketing-explanation">
+              <p>Manage your expenses in one central place.</p>
+              <p>
+                <Link className="cta" to="/expenses">
+                  <span>Get Started</span>
+                  <FaArrowRight />
+                </Link>
+              </p>
+            </div>
+          </div>
+        </section>
+        <section className="marketing-section">
+          <header>
+            <FaChartBar />
+            <h2>Detailed Analytics</h2>
+          </header>
+          <div className="marketing-content">
+            <p className="marketing-explanation">
+              Benefit from best-in-class analytics to understand your spending
+              patterns.
+            </p>
+            <div className="marketing-image">
+              <img src="images/expenses-chart.jpg" alt="A demo bar chart." />
+            </div>
+          </div>
+        </section>
+      </main>
+    </>
   );
+}
+
+export function links() {
+  return [{ rel: "stylesheet", href: pricingStyles }];
+}
+
+export function meta() {}
+
+export function loader({request}: ActionFunctionArgs) {
+  return getUserFromSession(request);
 }
