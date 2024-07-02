@@ -21,7 +21,7 @@ function ExpenseForm() {
       }
     : {
         title: "",
-        amount: "",
+        amount: 0,
         date: "",
       };
 
