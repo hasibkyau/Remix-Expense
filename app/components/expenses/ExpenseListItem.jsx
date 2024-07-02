@@ -1,4 +1,6 @@
-function ExpenseListItem({id, title, amount }) {
+import { Form, Link } from "@remix-run/react";
+
+function ExpenseListItem({ id, title, amount }) {
   function deleteExpenseItemHandler() {
     // tbd
   }
@@ -10,8 +12,11 @@ function ExpenseListItem({id, title, amount }) {
         <p className="expense-amount">${amount.toFixed(2)}</p>
       </div>
       <menu className="expense-actions">
-        <button onClick={deleteExpenseItemHandler}>Delete</button>
-        <a href={`/expenses/${id}`}>Edit</a>
+        {/* <button onClick={deleteExpenseItemHandler}>Delete</button> */}
+        <Form method="delete" action={`/expenses/${id}`}>
+          <button>Delete</button>
+        </Form>
+        <Link href={`/expenses/${id}`}>Edit</Link>
       </menu>
     </article>
   );
