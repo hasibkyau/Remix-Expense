@@ -16,6 +16,14 @@ function ExpenseListItem({ id, title, amount }) {
     });
   }
 
+  if(fetcher.state !== 'idle'){
+    return(
+      <article className="expense-item locked">
+        <p>Deleting.......</p>
+      </article>
+    );
+  }
+
   return (
     <article className="expense-item">
       <div>
