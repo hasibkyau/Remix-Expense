@@ -2,6 +2,8 @@ import React from "react";
 
 import ExpenseStatistics from "~/components/expenses/ExpenseStatistics";
 import Chart from "~/components/expenses/Chart";
+import { ActionFunctionArgs } from "@remix-run/node";
+import { requireUserSession } from "~/data/auth.server";
 
 const DUMMY_EXPENSES = [
   {
@@ -27,3 +29,7 @@ const ExpenseAnalysisPage = () => {
 };
 
 export default ExpenseAnalysisPage;
+
+export async function loader({request}:ActionFunctionArgs){
+  await requireUserSession(request);
+}

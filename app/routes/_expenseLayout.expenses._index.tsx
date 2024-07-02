@@ -2,6 +2,8 @@ import { Link, json, useLoaderData } from "@remix-run/react";
 import ExpensesList from "~/components/expenses/ExpensesList";
 import { FaPlus, FaDownload } from "react-icons/fa";
 import { getExpenses } from "~/data/expenses.server";
+import { requireUserSession } from "~/data/auth.server";
+import { ActionFunctionArgs } from "@remix-run/node";
 
 const DUMMY_EXPENSES = [
   {
@@ -43,7 +45,9 @@ const Expenses = () => {
 
 export default Expenses;
 
-export async function loader() {
+export async function loader({request}: ActionFunctionArgs) {
+  await requireUserSession(request);
+
   const expenses = await getExpenses();
   return json(expenses);
 }

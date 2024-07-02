@@ -8,6 +8,7 @@ import { redirect, useNavigate } from "@remix-run/react";
 import { validateExpenseInput } from "~/data/validation.server";
 import ExpenseForm from "~/components/expenses/ExpenseForm";
 import Modal from "~/components/util/Modal";
+import { requireUserSession } from "~/data/auth.server";
 
 const ExpenseDetails = () => {
   const navigate = useNavigate();
@@ -25,7 +26,9 @@ const ExpenseDetails = () => {
 
 export default ExpenseDetails;
 
-export async function loader({ params }: ActionFunctionArgs) {
+export async function loader({ params, request }: ActionFunctionArgs) {
+  await requireUserSession(request);
+
   const expenseId = params.id;
   try {
     const expense = await getExpense(expenseId);
@@ -58,3 +61,4 @@ export async function action({ params, request }: ActionFunctionArgs) {
     return redirect("/expenses");
   }
 }
+
