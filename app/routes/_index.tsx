@@ -2,6 +2,8 @@ import { FaArrowRight, FaDollarSign, FaChartBar } from "react-icons/fa";
 import { Link } from "@remix-run/react";
 import MainHeader from "~/components/navigation/MainHeader";
 import pricingStyles from "~/styles/marketing.css";
+import { getUserFromSession } from "~/data/auth.server";
+import { ActionFunctionArgs } from "@remix-run/node";
 
 export default function Index() {
   return (
@@ -56,3 +58,7 @@ export function links() {
 }
 
 export function meta() {}
+
+export function loader({request}: ActionFunctionArgs) {
+  return getUserFromSession(request);
+}
